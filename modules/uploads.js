@@ -17,7 +17,7 @@ var options = {
 
 //var geocoder = nodeGeocoder(options);
 exports.doAct = async(sender, shipType) => {
-  hueLights.light(shipType);
+ // hueLights.light(shipType);
   messenger.send({text: ml.get("shipchoice",shipType)}, sender);
   let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?lang="+process.env.LANGUAGE+"&sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
 
@@ -33,7 +33,7 @@ exports.processUpload = async(sender, attachments) => {
   if (attachments.length > 0) {
     let attachment = attachments[0];
     if (attachment.type === "image") {
-      hueLights.reset();
+     // hueLights.reset();
       messenger.send({text: ml.get("einstein")}, sender);
       setTimeout(function () {messenger.writingIcon(sender);}, 50)
       redis.set(sender, attachment.payload.url);
