@@ -2,13 +2,16 @@
 const jwt   = require('jsonwebtoken');
 let request = require('request-promise');
 var fs = require('fs');
+var http=require('http');
 
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
 const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
 const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY.replace(/\\n/g, '\n');
 const model= process.env.EINSTEIN_VISION_MODEL;
 const languagemodel= process.env.EINSTEIN_LANGUAGE_MODEL;
-
+//model for Paris World Tour: 5YH2PZF43TNFZUD6HPL2RDAIRE
+//model for amsterdam: J4OXP3DSZ3VHZ534BDKRZCPBXA
+//model for dreamforce: 4GCQKVGS7QF3CEKX4ILPZPB6UI
 process.on('unhandledRejection', r => console.log(r));
 
 exports.classify = imageURL => new Promise(async(resolve, reject) => {
@@ -21,6 +24,7 @@ exports.classify = imageURL => new Promise(async(resolve, reject) => {
     sampleLocation : imageURL
   }
   let visionresult = await doCall('/vision/predict',formData,token);
+  console.log("vison result",visionresult);
   resolve(visionresult.probabilities[0]);
 });
 
@@ -36,11 +40,13 @@ exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
       expectedLabel: label,
       data: fs.createReadStream(filename)
     }
+    console.log(formData);
     let visionresult = await doCall('/vision/feedback',formData,token);
     console.log("feedback result",visionresult);
     formData = {
       modelId: model
     }
+    
     visionresult = await doCall('/vision/retrain',formData,token);
     
     resolve(visionresult);
@@ -59,6 +65,27 @@ exports.getIntent = text => new Promise(async(resolve, reject) => {
   }
   let intentresult = await doCall('/language/intent',formData,token);
   resolve(intentresult.probabilities[0]);
+});
+
+exports.getStatus = () => new Promise(async(resolve, reject) => {
+  var token = getToken();
+  if(token===null){
+    token = await updateToken();
+  }
+  
+    var options = {
+        simple:false,
+        resolveWithFullResponse : true,
+        url: `${pvsUrl}v2/vision/train/`+model,
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Cache-Control': 'no-cache'
+        }
+    }
+  
+      var result= await request(options);
+    resolve(JSON.parse(result.body)) ;
 });
 
 
@@ -90,6 +117,7 @@ var doCall = async(service,formData,jwtToken) => {
   return JSON.parse(result.body);
 };
 
+
 var download = async(uri,dlcallback) => {  
   /*  var options = {
         simple:true,
@@ -113,10 +141,21 @@ var download = async(uri,dlcallback) => {
 
       var uurl = require("url");
       var filename=uurl.parse(uri).pathname.split('/').slice(-1).pop();
-    request.head(uri,async  function(err, res, body){
+    
+   /* request.head(uri,async  function(err, res, body){
       var t= await request(uri).pipe(fs.createWriteStream('/tmp/'+filename));
       dlcallback('/tmp/'+filename);
+    });*/
+
+
+    var tempFile = fs.createWriteStream('/tmp/'+filename);
+    tempFile.on('open', function(fd) {
+      request.head(uri,async  function(err, res, body){
+        var t= await request(uri).pipe(tempFile);
+        dlcallback('/tmp/'+filename);
+      });
     });
+
   //};
   };
 
