@@ -2,6 +2,7 @@
 
 const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
+var hueEnabled=process.env.HUE_ENABLED === 'true';
 const rp = require('request-promise');
 var lights={xwing:process.env.HUE_XWING_ID,tiefighter:process.env.HUE_TIEFIGHTER_ID,uwing:process.env.HUE_UWING_ID};
 var modes={orange:'{"on": true,"bri": 254,"hue": 6751,"sat": 254,"effect": "none","xy":[0.554,0.4116],"ct": 500,"alert": "lselect","colormode": "xy"}',
@@ -36,7 +37,7 @@ var doLight = async(shipType,mode) =>{
     body:modes[mode]
   }
 
-  if(!process.env.DEVENV) {
+  if(!process.env.DEVENV && hueEnabled) {
     var result= await rp(options);
     if(result.statusCode=='401'){
       console.log('unauthorized hue api return');

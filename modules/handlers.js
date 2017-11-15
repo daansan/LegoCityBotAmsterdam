@@ -9,8 +9,8 @@ uploads = require('./uploads');
 exports.orderdone = (req,res) => {
   res.sendStatus(200);
   console.log('Payment Ingenico Done');
-  //hueLights.blink(req.query.shipType);
- // setTimeout(function(){hueLights.off(req.query.shipType);},10000);
+  hueLights.blink(req.query.shipType);
+  setTimeout(function(){hueLights.off(req.query.shipType);},10000);
   messenger.send(formatter.recu(req.query.shipType), req.query.sender);
 };
 

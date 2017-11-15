@@ -27,6 +27,7 @@ if(process.env.DEVENV) {
 
   app.get('/test', (req, res) => {
     console.log('dev start ',process.env.DEV_FB_SENDERID);
+   // einstein.getStatus().then(function(resp){console.log(resp);});
    postbacks.feedback(process.env.DEV_FB_SENDERID,'U-Wing;https://scontent.xx.fbcdn.net/v/t35.0-12/22879383_1749631485338982_570357329_o.jpg?_nc_ad=z-m&_nc_cid=0&oh=2a00a9de4d7643468ce6c27ef9c11829&oe=59F3E06D');
     
     
