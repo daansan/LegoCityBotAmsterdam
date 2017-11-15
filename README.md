@@ -28,7 +28,9 @@ You need a model for image classification and a model for Language intent.
     - Fill Einstein vars with what you got from step 2
 
 4. Run the command 
+   ```
    heroku labs:enable runtime-dyno-metadata -a <app name>
+   ```
 
 ### Step 4 : Create a Facebook App
 
