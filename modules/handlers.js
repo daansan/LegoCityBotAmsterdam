@@ -36,6 +36,13 @@ exports.InfoShip = (sender,text) => {
   else {messenger.send(formatter.shipChoice(), sender);}
 };
 
+exports.InfoCar = (sender,text) => {
+  let str=text.replace('-','').replace(' ','').toLowerCase();
+  if(str.includes("ferrari")){uploads.doAct(sender,"Ferrari");}
+  else if (str.includes("vwvan")){uploads.doAct(sender,"VW Van");}
+  else if (str.includes("uwing")){uploads.doAct(sender,"U-Wing");}
+  else {messenger.send(formatter.shipChoice(), sender);}
+};
 
 exports.information = (sender) => {
   messenger.send(formatter.information(response), sender);
