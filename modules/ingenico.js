@@ -47,10 +47,10 @@ exports.createCheckout = (returnUrl,shipType) => new Promise(async(resolve, reje
     //connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
     //console.log("INGENICO1",error);
     //console.log("INGENICO2",sdkResponse);
-    if(sdkResponse!==null)
-    resolve(process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl)
-    else
-    resolve(null);
-  });
+    //if(sdkResponse!==null)
+    //resolve(process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl)
+    //else
+    //resolve(null);
+  //});
 
 });
