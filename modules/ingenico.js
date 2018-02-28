@@ -2,7 +2,7 @@
 
 var connectSdk = require('connect-sdk-nodejs');
 let ml = require("./multilingual");
-var price={"tiefighter":125099,"xwing":139999,"uwing":125099};
+var price={"ferrari":125099,"vwvan":139999,"uwing":125099};
 
 connectSdk.init({
   host: 'api-sandbox.globalcollect.com',
