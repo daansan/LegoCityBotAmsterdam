@@ -15,6 +15,7 @@ const languagemodel= process.env.EINSTEIN_LANGUAGE_MODEL;
 process.on('unhandledRejection', r => console.log(r));
 
 exports.classify = imageURL => new Promise(async(resolve, reject) => {
+  console.log('in einstein.classify');
   var token = getToken();
   if(token===null){
     token = await updateToken();
