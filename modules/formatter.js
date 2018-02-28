@@ -87,7 +87,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
         elements.push(
             {
                 title: shipType,
-                "image_url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png?'+process.env.HEROKU_RELEASE_VERSION,
+                "image_url": 'https://' + process.env.HEROKU_APP_NAME  + '.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png?'+process.env.HEROKU_RELEASE_VERSION,
                 "buttons": [
                     {
                         "type": "postback",
