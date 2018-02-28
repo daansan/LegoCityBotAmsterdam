@@ -129,6 +129,7 @@ app.post('/webhook', async(req, res) => {
         console.log("Postback " + postback + " is not defined");
       }
     } else if (event.message && event.message.attachments) {
+      console.log('processing uploaded image');
       uploads.processUpload(sender, event.message.attachments);
     }
   }
