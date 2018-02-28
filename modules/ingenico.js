@@ -44,13 +44,13 @@ exports.createCheckout = (returnUrl,shipType) => new Promise(async(resolve, reje
   //token 1: 3b54ce56-9387-4418-bdad-1dd8c5bf446e
   //token 2: 68bdf6f8-a109-4882-9dea-9a49a99c6286
     console.log(body);
-    //connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
-    //console.log("INGENICO1",error);
-    //console.log("INGENICO2",sdkResponse);
-    //if(sdkResponse!==null)
-    //resolve(process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl)
-    //else
-    //resolve(null);
-  //});
+    connectSdk.hostedcheckouts.create("1567", body, null, function (error, sdkResponse) {
+    console.log("INGENICO1",error);
+    console.log("INGENICO2",sdkResponse);
+    if(sdkResponse!==null)
+    resolve(process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl)
+    else
+    resolve(null);
+  });
 
 });
