@@ -88,7 +88,7 @@ app.post('/webhook', async(req, res) => {
     } else if (event.message && event.message.text) {
       if (event.message.quick_reply) {
         let payload = event.message.quick_reply.payload;
-        console.log(event.message.quick_reply.payload);
+        console.log('Quick reply: ' + event.message.quick_reply.payload);
         let postback = postbacks[payload];
         if (postback && typeof postback === "function") {
           postback(sender, payload);
