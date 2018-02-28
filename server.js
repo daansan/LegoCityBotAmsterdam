@@ -79,10 +79,11 @@ app.get('/webhook', (req, res) => {
 app.get('/orderdone', handlers['orderdone']);
 
 app.post('/webhook', async(req, res) => {
-  console.log('Webhook routine hit, request: ' + JSON.stringify(req));
+  console.log('Webhook routine hit');
   let events = req.body.entry[0].messaging;
   for (let i = 0; i < events.length; i++) {
     let event = events[i];
+    console.log('event message: ' + event.message.text);
     let sender = event.sender.id;
     if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
       messenger.send({text: `Sorry I'm taking a break right now.`}, sender);
