@@ -113,7 +113,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                 ]
             }
         );
-// console.log("bouton",elements[0].buttons[2]);
+ console.log("bouton",elements[0]);
     return {
         "attachment": {
             "type": "template",
