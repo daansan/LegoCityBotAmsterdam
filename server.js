@@ -79,7 +79,7 @@ app.get('/webhook', (req, res) => {
 app.get('/orderdone', handlers['orderdone']);
 
 app.post('/webhook', async(req, res) => {
-  console.log('Webhook routine hit, request: ' + req);
+  console.log('Webhook routine hit, request: ' + JSON.stringify(req));
   let events = req.body.entry[0].messaging;
   for (let i = 0; i < events.length; i++) {
     let event = events[i];
