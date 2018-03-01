@@ -4,7 +4,6 @@ let messenger = require('./messenger'),
 formatter = require('./formatter'),
 einstein = require('./einstein'),
 nodeGeocoder = require('node-geocoder'),
-ingenico = require('./ingenico'),
 ml = require("./multilingual"),
 Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
