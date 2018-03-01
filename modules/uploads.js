@@ -5,7 +5,6 @@ formatter = require('./formatter'),
 einstein = require('./einstein'),
 nodeGeocoder = require('node-geocoder'),
 ingenico = require('./ingenico'),
-hueLights = require('./hue-lights'),
 ml = require("./multilingual"),
 Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
@@ -16,15 +15,14 @@ var options = {
 };
 
 //var geocoder = nodeGeocoder(options);
-exports.doAct = async(sender, shipType) => {
-  hueLights.light(shipType);
-  messenger.send({text: ml.get("shipchoice",shipType)}, sender);
-  let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?lang="+process.env.LANGUAGE+"&sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
+exports.doAct = async(sender, carType) => {
+  messenger.send({text: ml.get("carchoice",carType)}, sender);
+  //let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?lang="+process.env.LANGUAGE+"&sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
 
-  let redirecturl = await ingenico.createCheckout(returnUrl,shipType);
-  console.log('ingenico',redirecturl);
-  if(redirecturl!==null)
-      messenger.send(formatter.ficheinfo(shipType,redirecturl), sender);
+  //let redirecturl = await ingenico.createCheckout(returnUrl,shipType);
+  //console.log('ingenico',redirecturl);
+  //if(redirecturl!==null)
+  messenger.send(formatter.ficheinfo(carType), sender);//,redirecturl), sender);
 
 };
 
@@ -33,18 +31,17 @@ exports.processUpload = async(sender, attachments) => {
   if (attachments.length > 0) {
     let attachment = attachments[0];
     if (attachment.type === "image") {
-      hueLights.reset();
       messenger.send({text: ml.get("einstein")}, sender);
       setTimeout(function () {messenger.writingIcon(sender);}, 50)
       redis.set(sender, attachment.payload.url);
-      let shipType = await einstein.classify(attachment.payload.url);
-      console.log('classification defined:',shipType);
-      if(shipType.probability<0.4){
-        console.log("probability too low",shipType.probability);
+      let carType = await einstein.classify(attachment.payload.url);
+      console.log('classification defined:',carType);
+      if(carType.probability<0.4){
+        console.log("probability too low",carType.probability);
         messenger.send({text: ml.get("norec")}, sender);
       }
       else{
-            this.doAct(sender,shipType.label);
+            this.doAct(sender,formatter.mapCarLabelToType(carType.label));
           }
 
     }else if (attachment.type === "location") {

@@ -23,46 +23,29 @@
       "description": "Bot Language",
       "value":"fr"
     },
-    "HUE_ENABLED": {
-      "description": "Hue bridge enabled?",
-      "value":"false"
+    "COMMUNITY_URL": {
+      "description": "Url to MyRetroCar Community",
+      "value":"sdodemo-main-160c06649ec.force.com/MyRetroCar"
     },
-    "HUE_XWING_ID": {
-      "description": "Hue Light ID from API",
-      "value":"",
-      "required":false
+    "COMMUNITY_FERRARI_F40": {
+      "description": "Topic url for Ferrari F40",
+      "value":"0TO0N000000AELRWA4/ferrari-f40"
     },
-    "HUE_UWING_ID": {
-      "description": "Hue Light ID from API",
-      "value":"",
-      "required":false
+    "COMMUNITY_VOLKSWAGEN_T1_CAMPER_VAN": {
+      "description": "Topic url for Volkswagen T1 Camper Van",
+      "value":"0TO0N000000AELWWA4/volkswagen-t1-camper-van"
     },
-    "HUE_TIEFIGHTER_ID": {
-      "description": "Hue Light ID from API",
-      "value":"",
-      "required":false
+    "COMMUNITY_VOLKSWAGEN_BEETLE": {
+      "description": "Topic url for Volkswagen Beetle",
+      "value":"0TO0N000000AELHWA4/volkswagen-beetle"
     },
-    "HUE_BRIDGE_TOKEN": {
-      "description": "Bridge Token from api",
-      "value":"",
-      "required":false
+    "COMMUNITY_CATERHAM_SEVEN_620R": {
+      "description": "Topic url for Caterham Seven 620r",
+      "value":"0TO0N000000AELbWAO/caterham-seven-620r"
     },
-    "HUE_BRIDGE_ID": {
-      "description": "Bridge ID",
-      "value":"",
-      "required":false
-    },
-    "COMMUNITY_TIE_FIGHTER": {
-      "description": "Topic url for TieFighter",
-      "value":"0TO0Y000000bp5rWAA/tie-fighter"
-    },
-    "COMMUNITY_UWING": {
-      "description": "Topic url for Uwing",
-      "value":"0TO0Y000000bp5qWAA/uwing"
-    },
-    "COMMUNITY_XWING": {
-      "description": "Topic url for Xwing",
-      "value":"0TO0Y000000bp5pWAA/xwing"
+    "COMMUNITY_MINI_COOPER": {
+      "description": "Topic url for Mini Cooper",
+      "value":"0TO0N000000AELMWA4/mini-cooper"
     },
     "INGENICO_API_ID": {
       "description": "Ingenico API ID",

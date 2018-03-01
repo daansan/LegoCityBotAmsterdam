@@ -13,9 +13,9 @@ exports.acheter = (sender,shipType) => {
   messenger.send({text: 'acheter'}, sender);
 };
 
-exports.fiche = (sender,shipType) => {
-  console.log('fiche technique',shipType );
-  messenger.send(formatter.fiche(shipType), sender);
+exports.fiche = (sender,carType) => {
+  console.log('fiche technical specs',carType );
+  messenger.send(formatter.fiche(carType), sender);
 };
 
 exports.xwing = (sender) => {

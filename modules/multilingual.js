@@ -1,57 +1,39 @@
 var lang = process.env.LANGUAGE;
 var strings={
     "hello":{
-        "fr":"Bonjour, PLACEHOLDER et bienvenue dans votre assistant StarForce.",
-        "en":"Hello PLACEHOLDER, and welcome to your StarForce assistant."
+        "en":"Hello PLACEHOLDER, and welcome to your MyRetroCar assistant."
     },
     "which":{
-        "fr":"Quel vaisseau vous intéresse en particulier? ",
-        "en":"Which spaceship do you prefer? "
+        "en":"Which car do you prefer? "
     },
     "specs":{
-        "fr": "Fiche Technique",
         "en": "Technical Specs"
     },
-    "avis":{
-        "fr": "Avis Communauté",
+    "qna":{
         "en": "Community Reviews"
     },
     "buy":{
-        "fr": "Acheter - PLACEHOLDER€",
         "en": "Buy online - $PLACEHOLDER"
     },
-    "shipchoice":{
-        "fr": "Le PLACEHOLDER. Très bon choix. Voilà ses caractéristiques:",
+    "carchoice":{
         "en": "The PLACEHOLDER. Very good choice. Here are its detailed specs:"
     },
     "einstein":{
-        "fr": "Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...",
         "en": "Let me analyse this picture with Einstein Vision..."
     },
     "norec":{
-        "fr": "Je ne reconnais pas ce vaisseau. Merci de réessayer.",
         "en": "I do not recognize this spaceship. Please try again."
     },
     "infos":{
-        "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",
-        "en": "You like one of our spaceship? Send a picture and I'll give you all the details."
+        "en": "You like one of our cars? Send a picture and I'll give you all the details."
     },
     "locale":{
-        "fr": "fr_FR",
         "en": "en_US"
     },
     "currency":{
-        "fr": "EUR",
-        "en": "USD"
+        "en": "EUR"
     },
     "shipto":{
-        "fr": {
-            "street_1":"6 rue Daguerre",
-            "city":"Paris",
-            "postal_code":"75014",
-            "state":"Ile-De-France",
-            "country":"FR"
-          },
         "en": {
             "street_1":"747 Howard St",
             "city":"San Francisco",

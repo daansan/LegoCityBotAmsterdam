@@ -4,8 +4,8 @@ let moment = require("moment"),
     ml = require("./multilingual"),
     numeral = require("numeral");
 
- var price={"ferrari":1250.99,"vwvan":1399.99,"uwing":1250.99};
- var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNITY_TIE_FIGHTER,uwing:process.env.COMMUNITY_UWING};
+ var price={"ferrarif40":1250.99,"volkswagent1campervan":1399.99,"volkswagenbeetle":1250.99,"minicooper":1400.10,"caterhamseven620r":2019.87};
+ var commlinks={ferrarif40:process.env.COMMUNITY_FERRARI_F40,volkswagent1campervan:process.env.COMMUNITY_VOLKSWAGEN_T1_CAMPER_VAN,volkswagenbeetle:process.env.COMMUNITY_VOLKSWAGEN_BEETLE,caterhamseven620r:process.env.COMMUNITY_CATERHAM_SEVEN_620R,minicooper:process.env.COMMUNITY_MINI_COOPER};
 
 
 exports.bonjour = response => {
@@ -13,24 +13,34 @@ exports.bonjour = response => {
         "text":ml.get("hello",response.first_name),
     }
 };
-exports.shipChoice = () =>{
+exports.carChoice = () =>{
   return {
       "text":ml.get("which"),
       "quick_replies":[
         {
           "content_type":"text",
-          "title":"X-WING",
-          "payload":"xwing"
+          "title":"Ferrari F40",
+          "payload":"ferrari-f40"
         },
         {
           "content_type":"text",
-          "title":"U-WING",
-          "payload":"uwing"
+          "title":"Caterham Seven 620r",
+          "payload":"caterham-seven-620r"
         },
         {
           "content_type":"text",
-          "title":"Tie Fighter",
-          "payload":"tiefighter"
+          "title":"Mini Cooper",
+          "payload":"mini-cooper"
+        },
+        {
+          "content_type":"text",
+          "title":"Volkswagen Beetle",
+          "payload":"volkswagen-beetle"
+        },
+        {
+          "content_type":"text",
+          "title":"Volkswagen T1 Camper Van",
+          "payload":"volkswagen-t1-camper-van"
         }
       ]
   }
@@ -54,7 +64,7 @@ exports.recu = shipType =>{
             "quantity":1,
             "price":price[shipType],
             "currency":ml.get("currency"),
-            "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png?'+process.env.HEROKU_RELEASE_VERSION
+            "image_url":'https://'+process.env.HEROKU_APP_NAME+'.herokuapp.com/'+shipType+'.png?'+process.env.HEROKU_RELEASE_VERSION
           }
         ],
         "address":ml.get("shipto"),
@@ -80,40 +90,47 @@ exports.avis = vaisseau => {
       }
 };
 
+exports.mapCarLabelToType = (label) => {
+    //converts einstein labels to car types, helps to load images
+    if(label.toLowerCase().includes("ferrari")) {
+        return "ferrari-f40";
+    } else if(label.toLowerCase().includes("caterham")) {
+        return "caterham-seven-620r";
+    } else if(label.toLowerCase().includes("mini")) {
+        return "mini-cooper";
+    } else if(label.toLowerCase().includes("beetle")) {
+        return "volkswagen-beetle";
+    } else if(label.toLowerCase().includes("t1")) {
+        return "volkswagen-t1-camper-van";
+    } else {
+        return "unknown";
+    }
+}
 
-exports.ficheinfo = (shipType,checkouturl) => {
+exports.ficheinfo = (carType) => {
 
     let elements = [];
         elements.push(
             {
-                title: shipType,
-                "image_url": 'https://' + process.env.HEROKU_APP_NAME  + '.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png?'+process.env.HEROKU_RELEASE_VERSION,
+                title: carType,
+                "image_url": 'https://' + process.env.HEROKU_APP_NAME  + '.herokuapp.com/'+carType.replace(' ','').toLowerCase()+'.png?'+process.env.HEROKU_RELEASE_VERSION,
                 "buttons": [
                     {
                         "type": "postback",
                         "title": ml.get("specs"),
-                        "payload": "fiche,"+shipType
+                        "payload": "fiche,"+carType
                     },
                     {
                         "type":"web_url",
-                        "title":ml.get("avis"),
-                        "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
+                        "title":ml.get("qna"),
+                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
-
-                    },
-                    {
-                      "type":"web_url",
-                      "title":ml.get("buy",price[shipType.replace('-','').replace(' ','').toLowerCase()]),
-                      "url": checkouturl,
-                      "webview_height_ratio": "tall",
-                      "messenger_extensions": false,
-                      "webview_share_button":"hide"
                     }
                 ]
             }
         );
- console.log("bouton",elements[0]);
+    console.log("button",elements[0]);
     return {
         "attachment": {
             "type": "template",
@@ -125,12 +142,12 @@ exports.ficheinfo = (shipType,checkouturl) => {
     };
 };
 
-exports.fiche = shipType => {
+exports.fiche = carType => {
     return {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": 'https://' + process.env.HEROKU_APP_NAME + '.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs-'+process.env.LANGUAGE+'.png?'+process.env.HEROKU_RELEASE_VERSION
+                "url": 'https://' + process.env.HEROKU_APP_NAME + '.herokuapp.com/'+shipType.replace(' ','').toLowerCase()+'-specs-'+process.env.LANGUAGE+'.png?'+process.env.HEROKU_RELEASE_VERSION
             }
         }
     };
