@@ -93,15 +93,15 @@ exports.avis = vaisseau => {
 exports.mapCarLabelToType = (label) => {
     //converts einstein labels to car types, helps to load images
     if(label.toLowerCase().includes("ferrari")) {
-        return "ferrari-f40";
+        return "Ferrari-F40";
     } else if(label.toLowerCase().includes("caterham")) {
-        return "caterham-seven-620r";
+        return "Caterham-Seven-620r";
     } else if(label.toLowerCase().includes("mini")) {
-        return "mini-cooper";
+        return "Mini-Cooper";
     } else if(label.toLowerCase().includes("beetle")) {
-        return "volkswagen-beetle";
+        return "Volkswagen-Beetle";
     } else if(label.toLowerCase().includes("t1")) {
-        return "volkswagen-t1-camper-van";
+        return "Volkswagen-T1-Camper-Van";
     } else {
         return "unknown";
     }
@@ -123,7 +123,7 @@ exports.ficheinfo = (carType) => {
                     {
                         "type":"web_url",
                         "title":ml.get("qna"),
-                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
+                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[carType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
                     }
