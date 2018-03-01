@@ -55,7 +55,7 @@ if(process.env.DEVENV) {
       }
     }
     else {
-      messenger.send({text: `Désolé je n'ai pas compris.\nEnvoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, process.env.DEV_FB_SENDERID);
+      messenger.send({text: `Sorry I did not understand your intent. \nPlease send me the picture of a car and I'll give you all the information.`}, process.env.DEV_FB_SENDERID);
     }
   });*/
 
@@ -116,7 +116,7 @@ app.post('/webhook', async(req, res) => {
             }
           }
           else {
-          messenger.send({text: `Désolé je n'ai pas compris.\nEnvoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
+          messenger.send({text: `Sorry I did not understand your intent. \nPlease send me the picture of a car and I'll give you all the information.`}, sender);
           }
         }
       }

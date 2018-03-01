@@ -1,23 +1,54 @@
 {
   "intents": {
     "Greetings": [
-      "Bonjour",
-      "bonjour",
       "Hi",
       "hi",
       "Hello",
       "hello",
       "Sup",
-      "bjr",
-      "salut"
+      "sup",
+      "Yo",
+      "yo",
+      "Hey",
+      "hey",
+      "Hey Man",
+      "How's it going",
+      "What's up",
+      "How's everything",
+      "Long time no see",
+      "Good Morning",
+      "Good Afternoon",
+      "Good Evening",
+      "Good to see you",
+      "Nice to see you",
+      "It's been a while",
+      "It has been a while",
+      "Pleased to meet you",
+      "How do you do",
+      "How have you been",
+      "Are you OK",
+      "You alright",
+      "Alright mate",
+      "Howdy",
+      "howdy",
+      "Whazzup",
+      "whazzup",
+      "Good day",
+      "G'day mate",
+      "Hiya",
+      "hiya"
     ],
-    "InfoShip" : [
-      "j'aimerais des infos sur un vaisseau",
-      "j'ai besoin d'en savoir plus",
-      "information sur un vaisseau",
-      "informations",
-      "information sur tiefighter",
-      "Je veux en savoir plus sur le X-Wing"
+    "InfoCar" : [
+      "I would like some information about a car",
+      "I need to know more",
+      "Information",
+      "Car Information",
+      "I want to know more about the car",
+      "I want to know more about the Ferrari F40",
+      "I want to know more about the Caterham Seven 620r",
+      "I want to know more about the Mini Cooper",
+      "I want to know more about the Volkswagen Beetle",
+      "I want to know more about the Volkswagen T1 Camper Van"
     ]
   }
 }

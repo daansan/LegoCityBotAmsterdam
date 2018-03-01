@@ -10,7 +10,7 @@ var strings={
         "en": "Technical Specs"
     },
     "qna":{
-        "en": "Community Reviews"
+        "en": "Community Knowledge"
     },
     "buy":{
         "en": "Buy online - $PLACEHOLDER"

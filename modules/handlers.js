@@ -38,9 +38,11 @@ exports.InfoShip = (sender,text) => {
 
 exports.InfoCar = (sender,text) => {
   let str=text.replace('-','').replace(' ','').toLowerCase();
-  if(str.includes("ferrari")){uploads.doAct(sender,"Ferrari");}
-  else if (str.includes("vwvan")){uploads.doAct(sender,"VW Van");}
-  else if (str.includes("uwing")){uploads.doAct(sender,"U-Wing");}
+  if(str.includes("ferrari")){uploads.doAct(sender,"Ferrari-F40");}
+  else if (str.includes("t1")){uploads.doAct(sender,"Volkswagen-T1-Camper-Van");}
+  else if (str.includes("beetle")){uploads.doAct(sender,"Volkswagen-Beetle");}
+  else if (str.includes("cooper")){uploads.doAct(sender,"Mini-Cooper");}
+  else if (str.includes("caterham")){uploads.doAct(sender,"Caterham-Seven-620r");}
   else {messenger.send(formatter.shipChoice(), sender);}
 };
 
