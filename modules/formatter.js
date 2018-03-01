@@ -147,7 +147,7 @@ exports.fiche = carType => {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": 'https://' + process.env.HEROKU_APP_NAME + '.herokuapp.com/'+shipType.replace(' ','').toLowerCase()+'-specs-'+process.env.LANGUAGE+'.png?'+process.env.HEROKU_RELEASE_VERSION
+                "url": 'https://' + process.env.HEROKU_APP_NAME + '.herokuapp.com/'+carType.replace(' ','').toLowerCase()+'-specs-'+process.env.LANGUAGE+'.png?'+process.env.HEROKU_RELEASE_VERSION
             }
         }
     };
