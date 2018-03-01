@@ -76,8 +76,6 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.get('/orderdone', handlers['orderdone']);
-
 app.post('/webhook', async(req, res) => {
   let events = req.body.entry[0].messaging;
   for (let i = 0; i < events.length; i++) {
