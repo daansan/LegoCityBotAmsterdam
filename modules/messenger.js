@@ -25,6 +25,7 @@ exports.writingIcon = (recipient) => {
 };
 
 exports.send = (message, recipient) => {
+    console.log("sending message: " + message);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_TOKEN},
