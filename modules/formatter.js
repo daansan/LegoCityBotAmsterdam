@@ -8,7 +8,7 @@ let moment = require("moment"),
  var commlinks={ferrarif40:process.env.COMMUNITY_FERRARI_F40,volkswagent1campervan:process.env.COMMUNITY_VOLKSWAGEN_T1_CAMPER_VAN,volkswagenbeetle:process.env.COMMUNITY_VOLKSWAGEN_BEETLE,caterhamseven620r:process.env.COMMUNITY_CATERHAM_SEVEN_620R,minicooper:process.env.COMMUNITY_MINI_COOPER};
 
 
-exports.bonjour = response => {
+exports.greeting = response => {
     return {
         "text":ml.get("hello",response.first_name),
     }
@@ -46,44 +46,7 @@ exports.carChoice = () =>{
   }
 }
 
-exports.recu = shipType =>{
-
-    return {
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"receipt",
-        "recipient_name":"Rachel Skywalker",
-        "merchant_name":"StarForce",
-        "order_number":new Date().getTime(),
-        "currency":ml.get("currency"),
-        "payment_method":"Visa 7977",
-        "elements":[
-          {
-            "title":shipType,
-            "quantity":1,
-            "price":price[shipType],
-            "currency":ml.get("currency"),
-            "image_url":'https://'+process.env.HEROKU_APP_NAME+'.herokuapp.com/'+shipType+'.png?'+process.env.HEROKU_RELEASE_VERSION
-          }
-        ],
-        "address":ml.get("shipto"),
-        "summary":{
-          "total_cost":price[shipType]
-        }
-      }
-    }
-  }
-};
-
 exports.information = response => {
-  //  console.log('onBoard2');
-    return {
-        "text":ml.get("infos")
-      }
-};
-
-exports.avis = vaisseau => {
   //  console.log('onBoard2');
     return {
         "text":ml.get("infos")
@@ -158,23 +121,33 @@ exports.feedback = pUrl => {
         let elements = [];
             elements.push(
                 {
-                    title: 'Quel est le bon vaisseau?',
+                    title: 'What is the right car?',
                     "image_url": pUrl,
                     "buttons": [
                         {
                             "type": "postback",
-                            "title": "X-wing",
-                            "payload": "feedback,X-Wing;"+pUrl
+                            "title": "Ferrari F40",
+                            "payload": "feedback,ferrari-f40;"+pUrl
                         },
                         {
                             "type": "postback",
-                            "title": "U-wing",
-                            "payload": "feedback,U-Wing;"+pUrl
+                            "title": "Caterham Seven 620r",
+                            "payload": "feedback,caterham-seven-620r;"+pUrl
                         },
                         {
                             "type": "postback",
-                            "title": "Tie Fighter",
-                            "payload": "feedback,Tie Fighter;"+pUrl
+                            "title": "Mini Cooper",
+                            "payload": "feedback,mini-cooper;"+pUrl
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Volkswagen Beetle",
+                            "payload": "feedback,volkswagen-beetle;"+pUrl
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Volkswagen T1 Camper Van",
+                            "payload": "feedback,volkswagen-t1-camper-van;"+pUrl
                         }
                     ]
                 }

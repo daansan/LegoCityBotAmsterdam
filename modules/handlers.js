@@ -4,18 +4,11 @@ let messenger = require('./messenger'),
 formatter = require('./formatter'),
 uploads = require('./uploads');
 
-
-exports.orderdone = (req,res) => {
-  res.sendStatus(200);
-  console.log('Payment Ingenico Done');
-  messenger.send(formatter.recu(req.query.shipType), req.query.sender);
-};
-
 exports.Greetings = async(sender) => {
   console.log('start',sender);
   if(sender!="822485231243369"){
     let response=await messenger.getUserInfo(sender);
-    messenger.send(formatter.bonjour(response), sender);
+    messenger.send(formatter.greeting(response), sender);
     setTimeout(function () {
       messenger.writingIcon(sender);
     }, 500)
