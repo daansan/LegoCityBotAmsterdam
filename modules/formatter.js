@@ -138,7 +138,7 @@ exports.feedback = pUrl => {
                             "type": "postback",
                             "title": "Mini Cooper",
                             "payload": "feedback,mini-cooper;"+pUrl
-                        },
+                        }/*,
                         {
                             "type": "postback",
                             "title": "Volkswagen Beetle",
@@ -148,7 +148,7 @@ exports.feedback = pUrl => {
                             "type": "postback",
                             "title": "Volkswagen T1 Camper Van",
                             "payload": "feedback,volkswagen-t1-camper-van;"+pUrl
-                        }
+                        }*/
                     ]
                 }
             );
