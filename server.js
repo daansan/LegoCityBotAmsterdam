@@ -103,6 +103,9 @@ app.post('/webhook', async(req, res) => {
             messenger.send(formatter.feedback(result),sender);
           });
         }
+        if(event.message.text=='iets') {
+          console.log("IETS!!!");
+        }
         else{
           let result = await einstein.getIntent(event.message.text);
           console.log('intent',result);
