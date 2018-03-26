@@ -46,6 +46,10 @@
     "COMMUNITY_MINI_COOPER": {
       "description": "Topic url for Mini Cooper",
       "value":"0TO0N000000AELMWA4/mini-cooper"
+    },
+    "HEROKU_APP_NAME": {
+      "description": "The name of the heroku app (prefix of herokuapp.com)",
+      "value": "legocitybotamsterdam"
     }
   },
   "addons": [
