@@ -21,7 +21,7 @@
     },
     "LANGUAGE": {
       "description": "Bot Language",
-      "value":"fr"
+      "value":"en"
     },
     "COMMUNITY_URL": {
       "description": "Url to MyRetroCar Community",
