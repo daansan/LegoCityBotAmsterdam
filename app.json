@@ -16,7 +16,7 @@
       "value":"3N4MGUR6Z2JUVXWEDCA63I2H4Q"
     },
     "EINSTEIN_VISION_MODEL": {
-      "description": "Einstein.ai vision model for starship recognition",
+      "description": "Einstein.ai vision model for retro car recognition",
       "value":""
     },
     "LANGUAGE": {
