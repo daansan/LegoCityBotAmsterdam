@@ -63,7 +63,7 @@ exports.mapCarLabelToType = (label) => {
         return "Mini-Cooper";
     } else if(label.toLowerCase().includes("beetle")) {
         return "Volkswagen-Beetle";
-    } else if(label.toLowerCase().includes("t1")) {
+    } else if(label.toLowerCase().includes("van")) {
         return "Volkswagen-T1-Camper-Van";
     } else {
         return "unknown";
