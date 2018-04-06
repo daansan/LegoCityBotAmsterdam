@@ -5,7 +5,11 @@ let moment = require("moment"),
     numeral = require("numeral");
 
  var price={"ferrarif40":1250.99,"volkswagent1campervan":1399.99,"volkswagenbeetle":1250.99,"minicooper":1400.10,"caterhamseven620r":2019.87};
- var commlinks={ferrarif40:process.env.COMMUNITY_FERRARI_F40,volkswagent1campervan:process.env.COMMUNITY_VOLKSWAGEN_T1_CAMPER_VAN,volkswagenbeetle:process.env.COMMUNITY_VOLKSWAGEN_BEETLE,caterhamseven620r:process.env.COMMUNITY_CATERHAM_SEVEN_620R,minicooper:process.env.COMMUNITY_MINI_COOPER};
+ var commlinks={ferrarif40:process.env.COMMUNITY_FERRARI_F40,
+    volkswagent1campervan:process.env.COMMUNITY_VOLKSWAGEN_T1_CAMPER_VAN,
+    volkswagenbeetle:process.env.COMMUNITY_VOLKSWAGEN_BEETLE,
+    caterhamseven620r:process.env.COMMUNITY_CATERHAM_SEVEN_620R,
+    minicooper:process.env.COMMUNITY_MINI_COOPER};
 
 
 exports.greeting = response => {
@@ -72,7 +76,7 @@ exports.mapCarLabelToType = (label) => {
 
 exports.ficheinfo = (carType) => {
     console.log("in ficheinfo, carType=" + carType);
-    console.log("carType after processing: " + carType.replace('-','').replace(' ','').toLowerCase());
+    console.log("carType after processing: " + carType.replace('-'g,'').replace(' 'g,'').toLowerCase());
     let elements = [];
         elements.push(
             {
@@ -87,7 +91,7 @@ exports.ficheinfo = (carType) => {
                     {
                         "type":"web_url",
                         "title":ml.get("qna"),
-                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[carType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
+                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[carType.replace('-'g,'').replace(' 'g,'').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
                     }
