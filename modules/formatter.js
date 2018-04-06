@@ -71,6 +71,7 @@ exports.mapCarLabelToType = (label) => {
 }
 
 exports.ficheinfo = (carType) => {
+    console.log("in ficheinfo, carType=" + carType);
 
     let elements = [];
         elements.push(
