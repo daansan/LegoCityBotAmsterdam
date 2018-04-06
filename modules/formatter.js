@@ -72,7 +72,7 @@ exports.mapCarLabelToType = (label) => {
 
 exports.ficheinfo = (carType) => {
     console.log("in ficheinfo, carType=" + carType);
-
+    console.log("carType after processing: " + carType.replace('-','').replace(' ','').toLowerCase());
     let elements = [];
         elements.push(
             {
