@@ -91,7 +91,7 @@ exports.ficheinfo = (carType) => {
                     {
                         "type":"web_url",
                         "title":ml.get("qna"),
-                        "url": "https://"+process.env.COMMUNITY_URL+"/s/topic/"+commlinks[carType.replace(/-/g,'').replace(/ /g,'').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
+                        "url": "https://"+process.env.COMMUNITY_URL+commlinks[carType.replace(/-/g,'').replace(/ /g,'').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
                     }
