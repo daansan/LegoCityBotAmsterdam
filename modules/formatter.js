@@ -14,7 +14,8 @@ let moment = require("moment"),
 
 exports.greeting = response => {
     return {
-        "text":ml.get("hello",response.first_name),
+        //"text":ml.get("hello",response.first_name),
+        "text":ml.get("hello","Rachel"),
     }
 };
 exports.carChoice = () =>{
